@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Machine Digital Twin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div>
+            <p class="eyebrow">DIGITAL TWIN PROTOTYPE</p>
+            <h1>Smart Machine Digital Twin</h1>
+            <p class="subtitle">Predictive maintenance using simulated machine sensor data and ML.</p>
+        </div>
+        <div class="live"><span></span> LIVE TWIN</div>
+    </header>
+
+    <section class="machine-card">
+        <div>
+            <h2>Machine M-001</h2>
+            <p>Industrial Motor · Virtual Representation</p>
+        </div>
+        <div id="status" class="status normal">NORMAL</div>
+    </section>
+
+    <section class="metrics">
+        <div class="metric"><span>🌡 Temperature</span><strong><span id="temperature">--</span> °C</strong></div>
+        <div class="metric"><span>〽 Vibration</span><strong><span id="vibration">--</span> mm/s</strong></div>
+        <div class="metric"><span>⚙ RPM</span><strong><span id="rpm">--</span></strong></div>
+        <div class="metric"><span>⚡ Power</span><strong><span id="power">--</span> kW</strong></div>
+    </section>
+
+    <section class="grid">
+        <div class="panel">
+            <h3>Machine Health</h3>
+            <div class="health-row">
+                <div class="health-ring"><span id="health">--%</span></div>
+                <div>
+                    <p class="muted">Predicted condition</p>
+                    <h2 id="prediction">--</h2>
+                    <p id="recommendation">Waiting for sensor data...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h3>Simulation Controls</h3>
+            <p class="muted">Simulate a change in the physical machine and observe the Digital Twin response.</p>
+            <div class="buttons">
+                <button onclick="loadData('normal')">Normal</button>
+                <button onclick="loadData('overheating')">Simulate Overheating</button>
+                <button onclick="loadData('vibration')">Simulate High Vibration</button>
+                <button onclick="loadData('power')">Simulate High Power</button>
+            </div>
+            <p class="updated">Last update: <span id="timestamp">--</span></p>
+        </div>
+    </section>
+
+    <section class="panel explanation">
+        <h3>How this Digital Twin works</h3>
+        <div class="flow">
+            <div>Physical Machine</div><b>→</b><div>Sensor Data</div><b>→</b><div>Digital Twin</div><b>→</b><div>ML Prediction</div><b>→</b><div>Maintenance Alert</div>
+        </div>
+        <p>
+            In this prototype, Python simulates the sensor layer. In a real deployment,
+            these values could come from IoT sensors attached to an industrial machine.
+        </p>
+    </section>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
